@@ -13,4 +13,4 @@
 
 [リンク](https://github.com/yuukitoriyama)
 
-<img src="./sample.jpg" width="400px">
+![画像](./sample.jpg =400x)
