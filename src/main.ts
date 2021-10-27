@@ -1,12 +1,15 @@
 import * as fs from 'fs/promises';
 import markdownToHtml from 'zenn-markdown-html';
 
+import { MetadataBlogPost } from './utils';
+
 (async () => {
 	// publicディレクトリを作成
 	await fs.mkdir("./public");
 	// articleディレクトリを探索
 	const articleList = await fs.readdir("./articles");
-	articleList.forEach(async article => {
+	let cardList: string[] = [];
+	for (let article of articleList) {
 		const srcDir = `./articles/${article}`;
 		// 記事データの読み込み
 		const markdown = await fs.readFile(`${srcDir}/article.md`, {
@@ -30,31 +33,10 @@ import markdownToHtml from 'zenn-markdown-html';
 				}
 			});
 		});
-	});
+		// 記事一覧を作成
+		const card = `<small>${metadata.datePublished}</small><br/><p><a href="./${article}/index.html">${metadata.headline}</a>by ${metadata.author.name}</p>`;
+		cardList.push(card);
+	};
+	// 記事一覧ページを作成
+	fs.writeFile("./public/index.html", cardList.join("\n"));
 })();
-
-type MetadataBlogPost = {
-	"@context": "https://schema.org",
-	"@type": "BlogPosting",
-	"mainEntityOfPage": {
-		"@type": "WebPage",
-		"@id": string // ブログのURL
-	},
-	"headline": string, // 記事のタイトル
-	"image": string, // 記事のトップ画像へのリンク
-	"author": {
-		"@type": "Person",
-		"name": string, // 筆者の名前
-		"url": string // 筆者のプロフィールページへのリンク
-	},
-	"publisher": {
-		"@type": "Organization",
-		"name": string, // 発行者の名前
-		"logo": {
-			"@type": "ImageObject",
-			"url": string // ロゴのURL
-		}
-	},
-	"datePublished": string, // 記事の作成日
-	"dateModified": string // 記事の更新日
-}
