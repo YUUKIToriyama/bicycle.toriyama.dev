@@ -1,11 +1,24 @@
 import * as fs from 'fs/promises';
-import markdownToHtml from 'zenn-markdown-html';
+import MarkdownIt from 'markdown-it';
 
 import { MetadataBlogPost, blogTemplate } from './utils';
+
+const markdownToHtml = (markdown: string) => {
+	const parser = new MarkdownIt();
+	return parser.render(markdown);
+}
+
+const settings = {
+	customStyle: "./style/basic.css" // スタイルファイルのパスを指定する
+};
 
 (async () => {
 	// publicディレクトリを作成
 	await fs.mkdir("./public");
+	// CSSファイルをコピー
+	await fs.copyFile(settings.customStyle, "./public/style.css").catch(error => {
+		console.error(error);
+	});
 	// articleディレクトリを探索
 	const articleList = await fs.readdir("./articles");
 	let cardList: string[] = [];

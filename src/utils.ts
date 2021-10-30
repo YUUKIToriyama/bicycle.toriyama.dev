@@ -31,6 +31,7 @@ export const blogTemplate = (jsonld: MetadataBlogPost, article: string) => `<!DO
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>${jsonld.headline} | ${jsonld.publisher.name}</title>
 	<script type="application/ld+json">${jsonld}</script>
+	<link rel="stylesheet" href="../style.css" />
 </head>
 <body>
 	<header>
