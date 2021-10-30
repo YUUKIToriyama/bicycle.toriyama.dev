@@ -10,11 +10,11 @@
   "author": {
     "@type": "Person",
     "name": "Torichan",
-    "url": "github.com/YUUKIToriyama"
+    "url": "https://github.com/YUUKIToriyama"
   },  
   "publisher": {
     "@type": "Organization",
-    "name": "Toriyama Jitensya Co.,Ltd.",
+    "name": "Torichan bicycle labo",
     "logo": {
       "@type": "ImageObject",
       "url": "https://pbs.twimg.com/profile_images/1435134138659475456/rV1YHF06_400x400.jpg"
