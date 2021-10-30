@@ -23,3 +23,28 @@ export type MetadataBlogPost = {
 	"datePublished": string, // 記事の作成日
 	"dateModified": string // 記事の更新日
 }
+
+export const blogTemplate = (jsonld: MetadataBlogPost, article: string) => `<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>${jsonld.headline} | ${jsonld.publisher.name}</title>
+	<script type="application/ld+json">${jsonld}</script>
+</head>
+<body>
+	<header>
+		<h1>${jsonld.publisher.name}</h1>
+	</header>
+	<main>
+		<article>
+			<h1>${jsonld.headline}</h1>
+			<p>${jsonld.datePublished}(更新:${jsonld.dateModified})
+			${article}
+		</article>
+	</main>
+	<footer>
+		<small>bicycle.toriyama.dev is maintaied by <a href="${jsonld.author.url}">${jsonld.author.name}</a></small>
+	</footer>
+</body>
+</html>`;

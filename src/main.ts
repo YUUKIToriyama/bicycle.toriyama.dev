@@ -1,7 +1,7 @@
 import * as fs from 'fs/promises';
 import markdownToHtml from 'zenn-markdown-html';
 
-import { MetadataBlogPost } from './utils';
+import { MetadataBlogPost, blogTemplate } from './utils';
 
 (async () => {
 	// publicディレクトリを作成
@@ -21,7 +21,7 @@ import { MetadataBlogPost } from './utils';
 		});
 		const metadata: MetadataBlogPost = JSON.parse(jsonld);
 		// HTMLを作成しファイルに出力
-		const html = `<html><head><title>${metadata.headline} | ${metadata.publisher.name}</title><script type="application/ld+json">${jsonld}</script></head><body>${markdownToHtml(markdown)}</body></html>`;
+		const html = blogTemplate(metadata, markdownToHtml(markdown));
 		const dstDir = `./public/${article}`
 		await fs.mkdir(dstDir);
 		await fs.writeFile(`${dstDir}/index.html`, html);
