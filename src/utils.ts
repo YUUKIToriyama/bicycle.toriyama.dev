@@ -35,16 +35,23 @@ export const blogTemplate = (jsonld: MetadataBlogPost, article: string) => `<!DO
 </head>
 <body>
 	<header>
-		<h1>${jsonld.publisher.name}</h1>
+		<h1><a href="../">${jsonld.publisher.name}</a></h1>
 	</header>
 	<main>
+		<h1 class="title">${jsonld.headline}</h1>
+		<p>${jsonld.datePublished}(更新:${jsonld.dateModified})</p>
 		<article>
-			<h1>${jsonld.headline}</h1>
-			<p>${jsonld.datePublished}(更新:${jsonld.dateModified})
 			${article}
 		</article>
 	</main>
 	<footer>
+		<nav>
+			<ul>
+				<li><a href="../">Home</a></li>
+				<li><a href="https://github.com/yuukitoriyama">GitHub</a></li>
+				<li><a href="https://twitter.com/CoconMap">Twitter</a></li>
+			</ul>
+		</nav>
 		<small>bicycle.toriyama.dev is maintaied by <a href="${jsonld.author.url}">${jsonld.author.name}</a></small>
 	</footer>
 </body>

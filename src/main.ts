@@ -1,5 +1,6 @@
 import * as fs from 'fs/promises';
 import MarkdownIt from 'markdown-it';
+import sass from 'sass';
 
 import { MetadataBlogPost, blogTemplate } from './utils';
 
@@ -9,16 +10,18 @@ const markdownToHtml = (markdown: string) => {
 }
 
 const settings = {
-	customStyle: "./style/basic.css" // スタイルファイルのパスを指定する
+	customStyle: "./style/basic.scss" // スタイルファイルのパスを指定する
 };
 
 (async () => {
 	// publicディレクトリを作成
 	await fs.mkdir("./public");
-	// CSSファイルをコピー
-	await fs.copyFile(settings.customStyle, "./public/style.css").catch(error => {
-		console.error(error);
+	// SCSSファイルをコンパイル
+	const result = sass.renderSync({
+		file: settings.customStyle
 	});
+	// public/style.cssに保存
+	await fs.writeFile("./public/style.css", result.css.toString());
 	// articleディレクトリを探索
 	const articleList = await fs.readdir("./articles");
 	let cardList: string[] = [];
