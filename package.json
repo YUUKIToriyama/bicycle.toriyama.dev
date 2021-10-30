@@ -1,17 +1,11 @@
 {
   "scripts": {
     "start": "http-server -p 1234 ./public",
-    "build:code": "rimraf ./dist && tsc",
-    "build:article": "rimraf ./public && node dist/main.js"
+    "build:article": "rimraf ./public && node src/main.js"
   },
   "devDependencies": {
-    "@types/markdown-it": "^12.2.3",
-    "@types/node": "^16.11.6",
-    "@types/sass": "^1.43.0",
+    "@blogmd/core": "^0.0.9",
     "http-server": "^14.0.0",
-    "markdown-it": "^12.2.0",
-    "rimraf": "^3.0.2",
-    "sass": "^1.43.4",
-    "typescript": "^4.4.4"
+    "rimraf": "^3.0.2"
   }
 }
