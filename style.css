@@ -1,0 +1,55 @@
+body {
+  padding: 10px;
+  background-image: repeating-linear-gradient(to bottom, transparent 25px, rgba(0, 0, 0, 0.15) 26px, rgba(0, 0, 0, 0.15) 26px, transparent 27px, transparent 51px, rgba(0, 0, 0, 0.15) 52px, rgba(0, 0, 0, 0.15) 52px, transparent 53px, transparent 77px, rgba(0, 0, 0, 0.15) 78px, rgba(0, 0, 0, 0.15) 78px, transparent 79px, transparent 103px, rgba(0, 0, 0, 0.15) 104px, rgba(0, 0, 0, 0.15) 104px, transparent 105px, transparent 129px, rgba(0, 0, 0, 0.15) 130px, rgba(0, 0, 0, 0.15) 130px), repeating-linear-gradient(to right, transparent 25px, rgba(0, 0, 0, 0.15) 26px, rgba(0, 0, 0, 0.15) 26px, transparent 27px, transparent 51px, rgba(0, 0, 0, 0.15) 52px, rgba(0, 0, 0, 0.15) 52px, transparent 53px, transparent 77px, rgba(0, 0, 0, 0.15) 78px, rgba(0, 0, 0, 0.15) 78px, transparent 79px, transparent 103px, rgba(0, 0, 0, 0.15) 104px, rgba(0, 0, 0, 0.15) 104px, transparent 105px, transparent 129px, rgba(0, 0, 0, 0.15) 130px, rgba(0, 0, 0, 0.15) 130px);
+}
+
+header h1 {
+  font-size: x-large;
+}
+header a {
+  text-decoration: none;
+  color: black;
+}
+
+main article h1:first-letter {
+  font-size: 2em;
+  color: #215fc5;
+}
+main article h1 {
+  border-bottom: solid 3px #71a0eb;
+}
+main article h1:after {
+  width: 30%;
+  position: absolute;
+  content: "";
+  display: block;
+  border-bottom: solid 3px #215fc5;
+}
+main article p {
+  text-indent: 1em;
+}
+main article img {
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0px 0px 30px -5px rgba(0, 0, 0, 0.5);
+  display: block;
+  margin: 0 auto;
+}
+
+footer {
+  text-align: center;
+}
+footer nav ul {
+  margin: 0;
+  padding: 0;
+}
+footer nav li {
+  list-style: none;
+  display: inline-block;
+  width: 10%;
+  min-width: 90px;
+}
+footer nav li:not(:last-child) {
+  border-right: 2px solid #ddd;
+}
