@@ -21,6 +21,8 @@ jobs:
         run: npm ci
       - name: Build blog pages
         run: npm run build:article
+      - name: Create CNAME
+        run: echo "bicycle.toriyama.dev" > ./public/CNAME
       - name: Deploy products to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
